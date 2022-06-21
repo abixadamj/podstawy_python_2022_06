@@ -20,3 +20,5 @@ while True:
 
 # koniec pętli while
 print(f"Our full database: {our_clients}")
+
+q = avg_income()

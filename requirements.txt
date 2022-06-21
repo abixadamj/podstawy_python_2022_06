@@ -1,0 +1,4 @@
+faker
+pandas
+matplotlib
+snakemd
