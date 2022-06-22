@@ -1,9 +1,10 @@
 from store.warehause import Good
+import pickle
 
 shelf = input("Name of the shelf: ")
+shelf_list = []
 
 while True:
-    shelf_list = []
     name = input("Computer name (KONIEC):")
     if name == "KONIEC":
         break
@@ -14,4 +15,11 @@ while True:
     shelf_list.append(computer)
 
 if shelf_list:
-    our_store_db = {shelf, shelf_list}
+    print("OK")
+    our_store_db = {shelf: shelf_list}
+    with open("dbstore.dat", "wb") as dbfile:
+        try:
+            pickle.dump(our_store_db, dbfile)
+            print("Done")
+        except:
+            print("Error")
