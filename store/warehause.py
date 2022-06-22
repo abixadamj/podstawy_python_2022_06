@@ -1,7 +1,7 @@
 class Good:
     model_name = "Personal Computer"
 
-    def __init__(self, our_model, cpu, speed, prod_year):
+    def __init__(self, our_model, cpu="Intel", speed=10, prod_year=2020):
         """Przeciążenie metody !"""
         print("Hej - jestem init!")
         self.model = our_model
@@ -13,6 +13,7 @@ class Good:
 
     def opis(self):
         print(f"Jestem {self.model_name} - modelem {self.model} - SN: {self.__serial}")
+        print(f"Speed: {self.speed} / prod year: {self.prod_year}")
 
     def set_sn(self, new_serial):
         if type(new_serial) is str and len(new_serial) > 5:
@@ -30,13 +31,14 @@ class Good:
 
 
 ############ [ koniec definicji klasy ]#######################
-
+print(f"Namespace: {__name__}")
 
 if __name__ == "__main__":
+    print("Wywołanie przestrzeni __main__")
     # dalszy skrypt
     computer_X = Good  # w ten sposób raczej NIE ROBIMY
-    computer_0 = Good("Komputer XT", "8086", 4, 1990)
-    computer_1 = Good("Komputer AT", "286", 12, 1993)
+    computer_0 = Good("Komputer XT", "8086", prod_year=1990)
+    computer_1 = Good("Komputer AT", "286", prod_year=1993, speed=33)
     computer_2 = Good("Komputer XT/AT", "Pentium/586", 133, 1998)  # poprawne wywołanie tworzenia obiektu
     computer_4 = Good("Komputer Adama", "Core i7", 3200, 2020)
 
