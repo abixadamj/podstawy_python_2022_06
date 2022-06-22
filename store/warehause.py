@@ -8,17 +8,24 @@ class Good:
         self.cpu_name = cpu
         self.speed = speed
         self.prod_year = prod_year
+        self.__serial = None
         print(f"Utworzyliśmy obiekt ID {id(self)}")
 
     def opis(self):
-        print(f"Jestem {self.model_name} - modelem {self.model}")
+        print(f"Jestem {self.model_name} - modelem {self.model} - SN: {self.__serial}")
+
+    def set_sn(self, new_serial):
+        if type(new_serial) is str and len(new_serial) > 5:
+            self.__serial = new_serial
+        else:
+            print(f"{new_serial} -> Bad S/N!")
 
     def set_model(self, new_model):
         print(f"Changing model from {self.model} to {new_model}")
         self.model = new_model
 
     def history(self):
-        print(f"Computer {self.model} was born in {self.prod_year}")
+        print(f"Computer {self.model}/{self.cpu_name} was born in {self.prod_year}")
         print(f"Was {3400 / self.speed} time slower than today 3400 MHz")
 
 
@@ -29,14 +36,16 @@ computer_2 = Good("Komputer XT/AT", "Pentium/586", 133, 1998)  # poprawne wywoł
 computer_4 = Good("Komputer Adama", "Core i7", 3200, 2020)
 
 computer_1.model = "PC XT"
+computer_1.__serial = "HH76"
+computer_1.set_sn("QQ88")
 computer_2.set_model("PC AT Computer")
 
 computer_0.opis()
 computer_1.opis()
 computer_2.opis()
 
-for comp in (computer_0, computer_1, computer_2, computer_4):
-    comp.history()
+# for comp in (computer_0, computer_1, computer_2, computer_4):
+#     comp.history()
 
 # print(dir(computer_0))
 # print(dir(computer_1))
