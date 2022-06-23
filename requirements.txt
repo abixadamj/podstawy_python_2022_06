@@ -2,3 +2,4 @@ faker
 pandas
 matplotlib
 snakemd
+openpyxl
