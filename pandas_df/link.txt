@@ -1,0 +1,9 @@
+https://anaconda.org/sgh_adamjurkiewicz/notebooks
+
+
+0 - https://anaconda.org/sgh_adamjurkiewicz/df-grudzien-17-dzialania/notebook
+1 - https://anaconda.org/sgh_adamjurkiewicz/luty_17/notebook
+2 - https://anaconda.org/sgh_adamjurkiewicz/drugs_local/notebook
+
+Zapis/odczyt:
+https://stackoverflow.com/questions/17098654/how-to-reversibly-store-and-load-a-pandas-dataframe-to-from-disk
