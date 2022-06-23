@@ -22,11 +22,13 @@ while True:
         sys.exit(0)
 
     if event == "DoIt":
-        sg.popup("Nasze wartości", values)
+        # sg.popup("Nasze wartości", values)
         if values["Browse"]:
             readed, df = read_from_xlsx(values["Browse"])
             if readed:
-                print(df)
+                # mamy df, dzielimy na elementy i zapisujemy do plików
+                wynik = split_to_xlsx(df, values[1])
+                sg.popup_auto_close(f"Wynik: {wynik}", auto_close_duration=2)
             else:
                 print("ERROR!!!")
         else:
