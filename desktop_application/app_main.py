@@ -1,6 +1,7 @@
 from functions_df.xlsx_operations import *
 import PySimpleGUI as sg
 import sys
+import os
 
 # https://pysimplegui.readthedocs.io/en/latest/
 
@@ -24,10 +25,13 @@ while True:
     if event == "DoIt":
         # sg.popup("Nasze wartości", values)
         if values["Browse"]:
+            # /home/adasiek/PycharmProjects/podstawy_python_2022_06/pandas_df/db_test.xlsx
             readed, df = read_from_xlsx(values["Browse"])
+            path, file = os.path.split(values["Browse"])
+            selected_owner = values[1]  # drugie pole INPUT w interfejsie
             if readed:
                 # mamy df, dzielimy na elementy i zapisujemy do plików
-                wynik = split_to_xlsx(df, values[1])
+                wynik = split_to_xlsx(df, selected_owner, path + "/")
                 sg.popup_auto_close(f"Wynik: {wynik}", auto_close_duration=2)
             else:
                 print("ERROR!!!")
