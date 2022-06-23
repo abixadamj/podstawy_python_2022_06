@@ -1,16 +1,17 @@
+from functions_df.xlsx_operations import *
 import PySimpleGUI as sg
 import sys
 
 # https://pysimplegui.readthedocs.io/en/latest/
 
 interface = [
-    [sg.Text("Make sth with XLSX")],
+    [sg.Text("Read from XLSX file:")],
     [sg.Input(), sg.FileBrowse()],
     [sg.Text("Podaj wyróżnionego Ownera:")],
     [sg.Input()],
     [sg.OK(), sg.Button("DoIt")],
 ]
-window = sg.Window("XLSX.", interface)
+window = sg.Window("XLSX operations.", interface)
 while True:
     # poniższe wywołanie otwiera okno i wczytuje dane
     event, values = window.read()
@@ -22,3 +23,11 @@ while True:
 
     if event == "DoIt":
         sg.popup("Nasze wartości", values)
+        if values["Browse"]:
+            readed, df = read_from_xlsx(values["Browse"])
+            if readed:
+                print(df)
+            else:
+                print("ERROR!!!")
+        else:
+            sg.popup_auto_close("Brak file name", auto_close_duration=3)
