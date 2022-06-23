@@ -34,6 +34,6 @@ while True:
                 wynik = split_to_xlsx(df, selected_owner, path + "/")
                 sg.popup_auto_close(f"Wynik: {wynik}", auto_close_duration=2)
             else:
-                print("ERROR!!!")
+                print(f"Komunikat z funkcji read -> {df} ")
         else:
             sg.popup_auto_close("Brak file name", auto_close_duration=3)

@@ -1,13 +1,20 @@
 import pandas as pd
+import os
 
 
 def read_from_xlsx(file_name):
     """read Excel, return DataFrame"""
+    _, extension = os.path.splitext(file_name)
+    if extension.lower() != ".xlsx":  # != różne
+        return False, f"{extension} - to nie był plik Excela"
     try:
         df = pd.read_excel(file_name)
         return (True, df)  # zwracamy 2 wartości - Tupla
-    except:
-        return (False, False)
+    except Exception as e:
+        # print(f"Error read_xlsx -> {e}")
+        # np. próba otwarcia pliku innego niż xlsx
+        # Error read_xlsx -> Excel file format cannot be determined, you must specify an engine manually.
+        return (False, f"Error - {e}")
 
 
 def write_df_to_xlsx(df_to_write, file_name):
